@@ -93,4 +93,11 @@ public class CloudTest extends BaseClassCliCloud {
         SmartUISnapshot.smartuiSnapshot(driver, "ignoreOptionsScreenshot");
     }
 
+    @Test
+    public void cloudTunnel() throws Exception {
+        driver.get("http://localhost:5173/");
+        SmartUISnapshot.smartuiSnapshot(driver,"Tunnel_01");
+        Thread.sleep(3000);
+    }
+
 }

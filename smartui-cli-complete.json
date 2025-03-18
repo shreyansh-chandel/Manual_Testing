@@ -6,6 +6,9 @@
     "viewports": [
       [
         1920
+      ],
+      [
+        1080
       ]
     ]
   },
@@ -20,5 +23,6 @@
   "waitForTimeout": 1000,
   "enableJavaScript": false,
   "allowedHostnames": [],
-  "smartIgnore": false
+  "smartIgnore": false,
+  "tunnel": true
 }
