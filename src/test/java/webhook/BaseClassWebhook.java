@@ -46,6 +46,7 @@ public class BaseClassWebhook extends config {
             Map<String, String> github = new HashMap<String, String>();
             github.put("url",githubURL);
             browserOptions.setCapability("github", github);
+            System.out.println("Github url Received successfully : "+githubURL);
         }
 
         String remoteUrl= "https://" + username + ":" + authkey + hub;
