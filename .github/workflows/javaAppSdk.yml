@@ -3,22 +3,19 @@ name: Trigger Automation from Public Repo
 on:
   push:
     branches:
-      - main  # Runs when changes are pushed to the main branch
-  workflow_dispatch:  # Allows manual triggering
+      - main
+  workflow_dispatch:
 
 jobs:
   trigger-script:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone the Public Repository
+      - name: Clone the Repository
         run: |
-          git clone https://github.com/public-repo-owner/public-repo.git
-          cd public-repo
-          ls -la  # Verify the repo contents
+          git clone https://github.com/shreyansh-chandel/Manual_Testing.git
+          cd Manual_Testing
 
       - name: Run Automation Script
         run: |
-          cd public-repo
-          chmod +x run-automation.sh  # Ensure script is executable
-          ./run-automation.sh  # Run the script
+          mvn test -D suite=webhook.xml
