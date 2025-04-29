@@ -2,7 +2,6 @@ package realDevice;
 
 import Common.config;
 import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
@@ -39,7 +38,7 @@ public class BaseClassRealDevice extends config {
         String remoteUrl= "https://" + username + ":" + authkey + hub;
         System.out.println(remoteUrl);
 
-        driver= new AndroidDriver(new URL(remoteUrl), capabilities);
+        driver= new AppiumDriver(new URL(remoteUrl), capabilities);
 
     }
 

@@ -89,7 +89,6 @@ public class CloudTest extends BaseClassCliCloud {
     @Test
     public void test4() throws Exception {
         driver.get("https://worlds-highest-website.com/");
-//        driver.get("https://fast.com/");
         SmartUISnapshot.smartuiSnapshot(driver, "ignoreOptionsScreenshot");
     }
 
@@ -98,6 +97,28 @@ public class CloudTest extends BaseClassCliCloud {
         driver.get("http://localhost:5173/");
         SmartUISnapshot.smartuiSnapshot(driver,"Tunnel_01");
         Thread.sleep(3000);
+    }
+
+    @Test
+    public void swagLabs() throws Exception {
+
+        driver.get("https://www.saucedemo.com/v1/");
+        String input= "//input[@id=\"user-name\"]";
+        currElement= waitUntilElementIsPresent(driver,5,input);
+        currElement.sendKeys("654321");
+        Map<String,Object> options= new HashMap<>();
+        Map<String,Object> ignoreDOM= new HashMap<>();
+        ignoreDOM.put("xpath",new String[]{"//input[@id='user-name']"});
+        options.put("ignoreDOM",ignoreDOM);
+        SmartUISnapshot.smartuiSnapshot(driver,"ss-01",options);
+
+    }
+
+    @Test
+    public void localTunnel() throws Exception {
+        driver.get("http://localhost:3001/");
+        Thread.sleep(3000);
+        SmartUISnapshot.smartuiSnapshot(driver,"local_01");
     }
 
 }

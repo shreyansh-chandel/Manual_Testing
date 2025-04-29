@@ -17,7 +17,6 @@ public class BaseClassCliLocal extends config {
 
         WebDriverManager.chromedriver().setup();
         ChromeOptions options= new ChromeOptions();
-        options.addArguments("--proxy-server=http://23.82.88.184:13733");
         driver= new ChromeDriver(options);
         driver.manage().window().maximize();
         System.out.println("Chrome Driver initiated");

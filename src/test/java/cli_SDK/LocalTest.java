@@ -1,13 +1,16 @@
 package cli_SDK;
 
 import io.github.lambdatest.SmartUISnapshot;
+import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class LocalTest extends BaseClassCliLocal {
 
@@ -46,7 +49,14 @@ public class LocalTest extends BaseClassCliLocal {
     }
 
     @Test
-    public void test05() throws Exception {
+    public void ipInfo() throws Exception {
+
+        Map<String, Object> selectOptions = new HashMap<>();
+        List<String> selectCSSSelectors = Arrays.asList("h1.heading-h1");
+        Map<String, List<String>> selectDOM = new HashMap<>();
+        selectDOM.put("cssSelector", selectCSSSelectors);
+        selectOptions.put("selectDOM", selectDOM);
+
         Map<String, Object> ignoreOptions = new HashMap<>();
         List<String> ignoreID = Arrays.asList("api-requests");
         List<String> ignoreCSSSelectors = Arrays.asList(".overflow-hidden section:first-of-type",
@@ -55,8 +65,15 @@ public class LocalTest extends BaseClassCliLocal {
         ignoreDOM.put("id", ignoreID);
         ignoreDOM.put("cssSelector", ignoreCSSSelectors);
         ignoreOptions.put("ignoreDOM", ignoreDOM);
+
         driver.get("https://ipinfo.io/");
-        SmartUISnapshot.smartuiSnapshot(driver,"kayak02",ignoreOptions);
+        SmartUISnapshot.smartuiSnapshot(driver,"ipInfo_01",ignoreOptions);
+    }
+
+    @Test
+    public void ipInfo1() throws Exception {
+        driver.get("https://ipinfo.io/");
+        SmartUISnapshot.smartuiSnapshot(driver,"ipInfo_01");
     }
 
     @Test
@@ -68,7 +85,7 @@ public class LocalTest extends BaseClassCliLocal {
         JavascriptExecutor js= (JavascriptExecutor) driver;
         js.executeScript("window.scrollTo()");
         Thread.sleep(2000);
-//        SmartUISnapshot.smartuiSnapshot(driver,"heavyPage01",config);
+        SmartUISnapshot.smartuiSnapshot(driver,"heavyPage01",config);
     }
 
     @Test
@@ -83,6 +100,7 @@ public class LocalTest extends BaseClassCliLocal {
     public void localTunnel() throws Exception {
         driver.get("http://localhost:3000/");
         Thread.sleep(3000);
+        SmartUISnapshot.smartuiSnapshot(driver,"local_01");
     }
 
     @Test
@@ -188,6 +206,107 @@ public class LocalTest extends BaseClassCliLocal {
         for(String s:urls){
             driver.get(s);
             SmartUISnapshot.smartuiSnapshot(driver,"Kayak-ss-"+i++);
+        }
+    }
+
+    @Test
+    public void swagLabs() throws Exception {
+
+        driver.get("https://www.saucedemo.com/v1/");
+        String input= "//input[@id=\"user-name\"]";
+        currElement= waitUntilElementIsPresent(driver,5,input);
+        currElement.sendKeys("standard_user");
+        Map<String,Object> options= new HashMap<>();
+        Map<String,Object> ignoreDOM= new HashMap<>();
+        ignoreDOM.put("xpath",new String[]{"//input[@id='user-name']"});
+        options.put("selectDOM",ignoreDOM);
+        SmartUISnapshot.smartuiSnapshot(driver,"LoginPage",options);
+        String password= "//input[@data-test=\"password\"]";
+        currElement= waitUntilElementIsPresent(driver,5,password);
+        currElement.sendKeys("secret_sauce");
+        String loginBtn= "//input[@id=\"login-button\"]";
+        currElement= waitUntilElementIsPresent(driver,5,loginBtn);
+        currElement.click();
+        SmartUISnapshot.smartuiSnapshot(driver,"HomePage",options);
+        String cart= "//a[@href=\"./cart.html\"]";
+        currElement= waitUntilElementIsPresent(driver,5,cart);
+        currElement.click();
+        SmartUISnapshot.smartuiSnapshot(driver,"Cart");
+        String sideNav= "//button[text()=\"Open Menu\"]";
+        currElement= waitUntilElementIsPresent(driver,5,sideNav);
+        currElement.click();
+        String aboutBtn= "//a[@id=\"about_sidebar_link\"]";
+        currElement= waitUntilElementIsPresent(driver,5,aboutBtn);
+        Thread.sleep(3000);
+        currElement.click();
+        SmartUISnapshot.smartuiSnapshot(driver,"About");
+        driver.get("https://ipinfo.io/");
+        Thread.sleep(3000);
+        Map<String,Object> ipInfoIgnoreDom= new HashMap<>();
+        ipInfoIgnoreDom.put("xpath",new String[]{"//div[@id=\"api-requests\"]"});
+        Map<String,Object> ipInfoOptions= new HashMap<>();
+        ipInfoOptions.put("ignoreDOM",ipInfoIgnoreDom);
+        SmartUISnapshot.smartuiSnapshot(driver,"ipInfo",ipInfoOptions);
+    }
+
+    @Test
+    public void expiredBadSsl() throws Exception {
+        driver.get("https://expired.badssl.com/");
+        SmartUISnapshot.smartuiSnapshot(driver,"ss-01");
+    }
+
+    @Test
+    public void longSsName() throws Exception {
+
+        driver.get("https://www.saucedemo.com/v1/");
+        String input= "//input[@id=\"user-name\"]";
+        currElement= waitUntilElementIsPresent(driver,5,input);
+        currElement.sendKeys("654321");
+        Map<String,Object> options= new HashMap<>();
+        Map<String,Object> ignoreDOM= new HashMap<>();
+        ignoreDOM.put("xpath",new String[]{"//input[@id='user-name']"});
+        options.put("selectDOM",ignoreDOM);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(450),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(460),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(452),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(454),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(480),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(430),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(450),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(451),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(440),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(460),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(480),options);
+        SmartUISnapshot.smartuiSnapshot(driver,generateRandomString(420),options);
+
+    }
+
+    @Test
+    public void multipleUrlsKayak() throws Exception {
+        driver.get("https://www.kayak.co.in");
+        Thread.sleep(30000);
+        JavascriptExecutor js= (JavascriptExecutor) driver;
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight);");
+        List<WebElement> elements= driver.findElements(By.xpath("//div[@class=\"w6G7-links\"]//li/a"));
+        for(WebElement ele:elements){
+            WebDriverWait wait= new WebDriverWait(driver,10);
+            wait.until(ExpectedConditions.elementToBeClickable(ele));
+            Actions actions = new Actions(driver);
+            actions.keyDown(Keys.COMMAND) // hold Command key (⌘) on Mac
+              .click(ele)
+              .keyUp(Keys.COMMAND)   // release Command key
+              .build()
+              .perform();
+        }
+        Set<String> windows= driver.getWindowHandles();
+        int i=0;
+        for(String window:windows){
+            driver.switchTo().window(window);
+            Thread.sleep(3000);
+            Map<String,Object> options = new HashMap<>();
+            options.put("fullPage",true);
+            SmartUISnapshot.smartuiSnapshot(driver,"ss_"+i+"_test");
+            i++;
         }
     }
 

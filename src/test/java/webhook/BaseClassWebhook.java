@@ -21,7 +21,7 @@ public class BaseClassWebhook extends config {
     @BeforeClass
     public void setup() throws MalformedURLException {
 
-        Map<String,String> map= getStageConfig();
+        Map<String,String> map= getProdConfig();
 
         String username = map.get("userName");
         String authkey = map.get("accessKey");
@@ -36,6 +36,7 @@ public class BaseClassWebhook extends config {
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "testNG-testNG");
         browserOptions.setCapability("LT:Options", ltOptions);
+        browserOptions.setCapability("selenium_version", "4.8.0");
 
         if (githubURL != null) {
             Map<String, String> github = new HashMap<String, String>();

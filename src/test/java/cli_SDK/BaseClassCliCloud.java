@@ -36,8 +36,8 @@ public class BaseClassCliCloud extends config {
         ltOptions.put("network", true);
         ltOptions.put("build", "Build01");
         ltOptions.put("project", "Project01");
-        ltOptions.put("tunnel", true);
-        ltOptions.put("tunnelName","4a274387-0e8b-4482-bbd2-5d3cdfde39f8");
+//        ltOptions.put("tunnel", true);
+//        ltOptions.put("tunnelName","4a274387-0e8b-4482-bbd2-5d3cdfde39f8");
         ltOptions.put("w3c", true);
         ltOptions.put("plugin", "java-java");
         browserOptions.setCapability("LT:Options", ltOptions);

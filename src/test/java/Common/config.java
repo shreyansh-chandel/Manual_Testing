@@ -1,5 +1,11 @@
 package Common;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 import java.security.SecureRandom;
 import java.util.HashMap;
 import java.util.Map;
@@ -8,8 +14,9 @@ public class config {
 
     //***************************Common config***********************
 
-    public String projectName= "Automation_02";
+    public String projectName= "test_011233";
     public String ssName= "screenShot_01";
+    public WebElement currElement;
 
 
     public static String generateRandomString(int length) {
@@ -44,6 +51,17 @@ public class config {
         stage.put("mobileHub","@stage-mobile-hub.lambdatestinternal.com/wd/hub");
         stage.put("appId","lt://APP10104571401742020049593650");
         return stage;
+    }
+
+    //***************************Common Functions************************
+
+    public static WebElement waitUntilElementIsPresent(WebDriver driver, long time, String element){
+        WebDriverWait wait= new WebDriverWait(driver,time);
+        try{
+            return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(element)));
+        }catch(Exception ignored){
+            return null;
+        }
     }
 
 }

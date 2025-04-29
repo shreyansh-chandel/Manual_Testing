@@ -2,19 +2,11 @@
   "web": {
     "browsers": [
       "chrome",
-      "firefox",
-      "safari",
-      "edge"
+      "safari"
     ],
     "viewports": [
       [
         1920
-      ],
-      [
-        1366
-      ],
-      [
-        1028
       ]
     ]
   },
@@ -29,5 +21,11 @@
   "waitForTimeout": 1000,
   "enableJavaScript": false,
   "allowedHostnames": [],
-  "smartIgnore": false
+  "smartIgnore": false,
+  "tunnel": {
+    "type": "auto",
+    "tunnelName": "Prod-shreyansh-tunnel",
+    "v": true,
+    "logFile": "/Users/shreyanshc/Documents/Automation-Manual/ManualTestingJava/TunnelLogs"
+  }
 }
