@@ -16,6 +16,7 @@ jobs:
           git clone https://github.com/shreyansh-chandel/Manual_Testing.git
           cd Manual_Testing
           git checkout stage
+          git pull
 
       - name: Step for push event
         run: |
