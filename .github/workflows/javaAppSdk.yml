@@ -14,9 +14,10 @@ jobs:
       - name: Clone the Repository
         run: |
           git clone https://github.com/shreyansh-chandel/Manual_Testing.git
-          cd Manual_Testing
 
       - name: Run Automation Script
         run: |
           cd Manual_Testing
+          echo java --version
+          echo pwd
           mvn test -D suite=webhook.xml
