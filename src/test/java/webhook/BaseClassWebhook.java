@@ -43,10 +43,8 @@ public class BaseClassWebhook extends config {
             github.put("url",githubURL);
             browserOptions.setCapability("github", github);
         }
-        System.out.println(browserOptions);
+
         String remoteUrl= "https://" + username + ":" + authkey + hub;
-        System.out.println(remoteUrl);
-        System.out.println(System.getenv("LT_ACCESS_KEY"));
         driver = new RemoteWebDriver(new URL(remoteUrl), browserOptions);
 
     }
