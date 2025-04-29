@@ -1,4 +1,4 @@
-name: Trigger Automation from Public Repo
+name: Automation Test
 
 on:
   push:
