@@ -1,0 +1,28 @@
+on:
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  trigger-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Clone the Repository
+        run: |
+          git clone https://github.com/shreyansh-chandel/Manual_Testing.git
+
+      - name: Step for pull_request event
+        run: |
+          echo "This is a pull_request event!"
+          git log -n 5 --format="%H %an %s" | while read line; do echo "$line"; done
+          echo "The latest commitId $(git log -n 2 --format='%H' | tail -n 1)"
+          echo "COMMIT_ID=$(git log -n 2 --format='%H' | tail -n 1)" >> $GITHUB_ENV
+        if: github.event_name == 'pull_request'
+
+      - name: Run Automation Script
+        run: |
+          cd Manual_Testing
+          java --version
+          mvn test -D suite=webhook.xml
