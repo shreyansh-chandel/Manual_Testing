@@ -39,5 +39,6 @@ jobs:
       - name: Run Automation Script
         run: |
           cd Manual_Testing
-          java --version
+          export LT_USERNAME= ${{ vars.LT_USERNAME }}
+          export LT_ACCESS_KEY= ${{ vars.LT_KEY }}
           mvn test -D suite=webhook.xml
