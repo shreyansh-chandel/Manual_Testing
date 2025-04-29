@@ -17,6 +17,10 @@ jobs:
 
       - name: Run Automation Script
         run: |
+          cd Manual_Testing
+          sudo apt update
+          sudo apt install -y openjdk-11-jdk
+          java -version
           java --version
           pwd
           mvn test -D suite=webhook.xml
