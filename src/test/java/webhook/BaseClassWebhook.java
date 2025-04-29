@@ -23,8 +23,12 @@ public class BaseClassWebhook extends config {
 
         Map<String,String> map= getStageConfig();
 
-        String username = map.get("userName");
-        String authkey = map.get("accessKey");
+        String username = System.getenv("LT_USERNAME") == null
+          ? "Your LT Username"
+          : System.getenv("LT_USERNAME");
+        String authkey = System.getenv("LT_ACCESS_KEY") == null
+          ? "Your LT AccessKey"
+          : System.getenv("LT_ACCESS_KEY");
         String hub = map.get("hub");
 
         ChromeOptions browserOptions = new ChromeOptions();
