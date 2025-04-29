@@ -18,6 +18,6 @@ jobs:
       - name: Run Automation Script
         run: |
           cd Manual_Testing
-          echo java --version
-          echo pwd
+          java --version
+          pwd
           mvn test -D suite=webhook.xml
