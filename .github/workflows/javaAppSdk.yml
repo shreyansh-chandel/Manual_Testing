@@ -18,4 +18,5 @@ jobs:
 
       - name: Run Automation Script
         run: |
+          cd Manual_Testing
           mvn test -D suite=webhook.xml
