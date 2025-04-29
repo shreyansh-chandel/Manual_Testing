@@ -45,8 +45,8 @@ public class config {
 
     public Map<String,String> getStageConfig(){
         Map<String,String> stage= new HashMap<>();
-        stage.put("userName","shreyanshc");
-        stage.put("accessKey","LT_BgJooFhOV3XInNXpJPwVuoXXI47Pte7SuReVtDkHgKYeHkq");
+        stage.put("userName","saurabhlambdatest");
+        stage.put("accessKey","bHrlmUUDhD2Weibdmb9R5DWmlfAj7nK6fwFnmAiIm15556j0Z5");
         stage.put("hub","@stage-hub.lambdatestinternal.com/wd/hub");
         stage.put("mobileHub","@stage-mobile-hub.lambdatestinternal.com/wd/hub");
         stage.put("appId","lt://APP10104571401742020049593650");
