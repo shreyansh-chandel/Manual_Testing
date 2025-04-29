@@ -33,8 +33,6 @@ public class config {
 
     public Map<String,String> getProdConfig(){
         Map<String,String> prod = new HashMap<>();
-        prod.put("userName","shreyanshc");
-        prod.put("accessKey","LT_WUaUMWBJGtWoVK1Kq1XKgwPDT8QnZsPFP4Ue93cz69dUMsU");
         prod.put("hub","@hub.lambdatest.com/wd/hub");
         prod.put("mobileHub","@mobile-hub.lambdatest.com/wd/hub");
         prod.put("appId","lt://APP10104482111741290100293768");
@@ -45,8 +43,6 @@ public class config {
 
     public Map<String,String> getStageConfig(){
         Map<String,String> stage= new HashMap<>();
-        stage.put("userName","shreyanshc");
-        stage.put("accessKey","LT_BgJooFhOV3XInNXpJPwVuoXXI47Pte7SuReVtDkHgKYeHkq");
         stage.put("hub","@stage-hub.lambdatestinternal.com/wd/hub");
         stage.put("mobileHub","@stage-mobile-hub.lambdatestinternal.com/wd/hub");
         stage.put("appId","lt://APP10104571401742020049593650");
