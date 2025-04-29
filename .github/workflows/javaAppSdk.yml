@@ -17,6 +17,7 @@ jobs:
 
       - name: Step for push event
         run: |
+          cd Manual_Testing
           echo "This is a push event!"
           echo "The latest commitId $(git log -1 --format='%H')"
           echo "COMMIT_ID=$(git log -1 --format='%H')" >> $GITHUB_ENV
@@ -26,5 +27,4 @@ jobs:
         run: |
           cd Manual_Testing
           java --version
-          pwd
           mvn test -D suite=webhook.xml
