@@ -129,6 +129,7 @@ public class ChromeTest extends BaseClassWebhook {
     public void ipinfo3(){
         driver.get("https://ipinfo.io/");
         driver.executeScript("smartui.takeScreenshot=ss-01");
+        driver.executeScript("smartui.takeScreenshot=ss-02");
     }
 
     @Test
