@@ -11,9 +11,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Clone the Repository
-        run: |
-          git clone https://github.com/shreyansh-chandel/Manual_Testing.git
+      - name: Checkout PR source branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref }}
+          fetch-depth: 10
 
       - name: Step for pull_request event
         run: |
