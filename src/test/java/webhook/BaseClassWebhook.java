@@ -21,7 +21,7 @@ public class BaseClassWebhook extends config {
     @BeforeClass
     public void setup() throws MalformedURLException {
 
-        Map<String,String> map= getProdConfig();
+        Map<String,String> map= getStageConfig();
 
         String username = System.getenv("LT_USERNAME") == null
           ? "Your LT Username"
