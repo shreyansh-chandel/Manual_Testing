@@ -19,7 +19,6 @@ jobs:
 
       - name: Step for pull_request event
         run: |
-          cd Manual_Testing
           echo "This is a pull_request event!"
           git log -n 5 --format="%H %an %s" | while read line; do echo "$line"; done
           echo "The latest commitId $(git log -n 2 --format='%H' | tail -n 1)"
